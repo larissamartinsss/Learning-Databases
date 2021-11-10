@@ -1,0 +1,18 @@
+drop table pessoas;
+
+create table pessoa(
+	id int generated always as identity
+	, nome varchar(50) not null 
+	, sobrenome varchar(50) not null
+	, idade int not null
+);
+
+create table endereco(
+id int generated always as identity
+,logradouro varchar(50) not null
+,numero varchar(20) not null
+,complemento varchar(20) null
+,bairro varchar(50) not null
+, cidade varchar(50) not null
+, cep varchar(50) not null
+);
