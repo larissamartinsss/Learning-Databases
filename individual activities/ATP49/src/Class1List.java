@@ -1,4 +1,6 @@
 
+import utils.ConnectionFactory;
+
 import java.sql.*;
 import java.sql.PreparedStatement;
 
@@ -6,6 +8,8 @@ public class Class1List {
     public static void main(String[] args) {
         // 1º step:
         try {
+
+            Connection connection = new ConnectionFactory().getConnection();
 
             // Acessando DB - Query SQL:
 

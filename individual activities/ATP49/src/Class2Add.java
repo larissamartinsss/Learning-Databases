@@ -1,17 +1,13 @@
 
+import utils.ConnectionFactory;
+
 import java.sql.*;
 
 public class Class2Add {
     public static void main(String[] args) {
 
         try {
-            String driverType = "jdbc";  String driverName = "postgresql";
-            String host = "localhost";   String database = "postgres";
-            String user = "postgres";    String pwd = "123456";
-            int port = 5432;
-            String connectionString = String.format("%s:%s://%s:%d/%s", driverType,driverName, host, port, database);
-            // Conectando:
-            Connection connection = DriverManager.getConnection(connectionString, user, pwd);
+            Connection connection = new ConnectionFactory().getConnection();
 
             String sql = "INSERT INTO produto(nome,descricao,preco,categoria_id)VALUES('Mi band','5th','250',2)";
 

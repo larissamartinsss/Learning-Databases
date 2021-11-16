@@ -1,4 +1,6 @@
 
+import utils.ConnectionFactory;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,13 +10,8 @@ public class Class4Delete {
     public static void main(String[] args) {
         try {
 
-            String driverType = "jdbc";  String driverName = "postgresql";
-            String host = "localhost";   String database = "postgres";
-            String user = "postgres";    String pwd = "123456";
-            int port = 5432;
-            String connectionString = String.format("%s:%s://%s:%d/%s", driverType,driverName, host, port, database);
-            // Conectando:
-            Connection connection = DriverManager.getConnection(connectionString, user, pwd);
+            Connection connection = new ConnectionFactory().getConnection();
+
             String sql = "DELETE FROM produto WHERE id = 3";
             PreparedStatement prepStatement = connection.prepareStatement(sql);
             prepStatement.execute(sql);
