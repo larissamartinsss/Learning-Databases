@@ -8,9 +8,7 @@ import java.sql.Statement;
 
 public class Class4Delete {
     public static void main(String[] args) {
-        try {
-
-            Connection connection = new ConnectionFactory().getConnection();
+        try( Connection connection = new ConnectionFactory().getConnection()){
 
             String sql = "DELETE FROM produto WHERE id = 3";
             PreparedStatement prepStatement = connection.prepareStatement(sql);
@@ -20,7 +18,6 @@ public class Class4Delete {
             int linhasExcluidas = prepStatement.getUpdateCount();
             System.out.printf("\nForam deletadas %d linhas.", linhasExcluidas);
 
-            connection.close();
         } catch (Exception e) {
             System.out.println("Não é possível conectar ao Banco de Dados. ");
         }

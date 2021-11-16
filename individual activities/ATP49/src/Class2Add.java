@@ -5,11 +5,10 @@ import java.sql.*;
 
 public class Class2Add {
     public static void main(String[] args) {
+        // try with resources
+        try (Connection connection = new ConnectionFactory().getConnection()){
 
-        try {
-            Connection connection = new ConnectionFactory().getConnection();
-
-            String sql = "INSERT INTO produto(nome,descricao,preco,categoria_id)VALUES('Mi band','5th','250',2)";
+            String sql = "INSERT INTO produto(nome,descricao,preco, codigo)VALUES('Mi band','5th',250.0,2)";
 
             PreparedStatement prepStatement = connection.prepareStatement(sql);
 
@@ -20,8 +19,6 @@ public class Class2Add {
                 int id = ids.getInt(1);
                 String.format("\nProduto com id nº: %s inserido com sucesso! ",id);
             }
-
-            connection.close();
         } catch (Exception e) {
             System.out.println("Não é possível conectar ao Banco de Dados. ");
         }
