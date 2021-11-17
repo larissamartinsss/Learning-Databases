@@ -1,5 +1,6 @@
 package views;
 
+import model.CategoriaDAO;
 import utils.ConnectionFactory;
 
 import java.sql.*;
@@ -8,11 +9,11 @@ public class Class2Add {
     public static void main(String[] args) {
         // try with resources
         try (Connection connection = new ConnectionFactory().getConnection()){
-
-            String sql = "INSERT INTO produto(nome,descricao,preco, codigo)VALUES('Mi band','5th',250.0,2)";
-
+            CategoriaDAO cat1 = new CategoriaDAO("Celulares");
+            String sql = "INSERT INTO categoria(nome)VALUES(?)";
             PreparedStatement prepStatement = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-            prepStatement.execute(sql);
+            prepStatement.setString(1, cat1.getNome());
+            prepStatement.execute();
             ResultSet ids = prepStatement.getGeneratedKeys();
 
             while (ids.next()) {

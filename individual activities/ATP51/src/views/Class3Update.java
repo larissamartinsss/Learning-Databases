@@ -1,5 +1,6 @@
 package views;
 
+import model.CategoriaDAO;
 import utils.ConnectionFactory;
 
 import java.sql.Connection;
@@ -10,9 +11,12 @@ import java.sql.Statement;
 public class Class3Update {
     public static void main(String[] args) {
         try ( Connection connection = new ConnectionFactory().getConnection()){
+            CategoriaDAO cat = new CategoriaDAO(5, "Atualizando...");
 
-            String sql = "UPDATE produto SET categoria_id = 1 where id > 0";
+            String sql = "UPDATE categoria SET nome=? where id = ?";
             PreparedStatement prepStatement = connection.prepareStatement(sql);
+            prepStatement.setInt(1, cat.getId());
+            prepStatement.setString(2, cat.getNome());
             prepStatement.execute(sql);
 
             int linhasAlteradas = prepStatement.getUpdateCount();
