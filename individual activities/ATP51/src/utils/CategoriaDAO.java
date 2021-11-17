@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class CategoriaDAO {
+    // Parei aqui: https://youtu.be/6X0KWhNM3-0?t=2210
     private Connection connection;
     public CategoriaDAO(Connection connection) {
         this.connection = connection;
