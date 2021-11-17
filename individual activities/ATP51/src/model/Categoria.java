@@ -1,13 +1,13 @@
 package model;
 
-public class CategoriaDAO {
+public class Categoria {
     private int id;
     private String nome;
 
-    public CategoriaDAO(String nome) {
+    public Categoria(String nome) {
         this.nome = nome;
     }
-    public CategoriaDAO(int id, String nome) {
+    public Categoria(int id, String nome) {
         this.id = id;
         this.nome = nome;
     }

@@ -1,6 +1,6 @@
 package views;
 
-import model.CategoriaDAO;
+import model.Categoria;
 import utils.ConnectionFactory;
 
 import java.sql.*;
@@ -16,7 +16,7 @@ public class Class1List {
                 prepStatement.execute();
                 ResultSet result = prepStatement.getResultSet();
                 while (result.next()) {
-                    CategoriaDAO cat = new CategoriaDAO(result.getInt("id"), result.getString("nome"));
+                    Categoria cat = new Categoria(result.getInt("id"), result.getString("nome"));
                     System.out.println(cat);
 
                 } }catch (Exception e) {
