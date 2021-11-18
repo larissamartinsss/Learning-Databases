@@ -3,9 +3,8 @@ package views;
 import dao.CategoriaDAO;
 import model.Categoria;
 import dao.ConnectionFactory;
-
 import java.sql.*;
-import java.sql.PreparedStatement;
+
 
 public class Class1List {
     public static void main(String[] args) {
