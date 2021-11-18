@@ -1,4 +1,4 @@
-package utils;
+package dao;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import javax.sql.DataSource;
 import java.sql.Connection;

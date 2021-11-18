@@ -1,28 +1,23 @@
 package views;
 
+import dao.CategoriaDAO;
 import model.Categoria;
-import utils.ConnectionFactory;
+import dao.ConnectionFactory;
 
 import java.sql.*;
 
 public class Class2Add {
     public static void main(String[] args) {
         // try with resources
-        try (Connection connection = new ConnectionFactory().getConnection()){
-            Categoria cat1 = new Categoria("Celulares");
-            String sql = "INSERT INTO categoria(nome)VALUES(?)";
-            PreparedStatement prepStatement = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-            prepStatement.setString(1, cat1.getNome());
-            prepStatement.execute();
-            ResultSet ids = prepStatement.getGeneratedKeys();
+        try (Connection connection = new ConnectionFactory().getConnection()) {
+            CategoriaDAO dao = new CategoriaDAO(connection);
+            Categoria cat1 = new Categoria("Video games");
+            Categoria cat2 = new Categoria("Informática");
+            dao.create(cat1);
+            dao.create(cat2);
+        } catch (SQLException e) {
+            e.printStackTrace();
 
-            while (ids.next()) {
-                int id = ids.getInt("id");
-                System.out.printf("\nProduto com id nº: %s inserido com sucesso! ",id);
-            }
-        } catch (Exception e) {
-            System.out.println("Não é possível conectar ao Banco de Dados. ");
         }
     }
 }
-

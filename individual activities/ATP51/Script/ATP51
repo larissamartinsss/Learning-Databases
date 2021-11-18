@@ -1,0 +1,10 @@
+create table categoria (
+id int primary key generated always as identity
+, nome varchar(50) not null
+);
+
+insert into categoria(nome) values ('smartphones');
+insert into categoria(nome) values ('TVs');
+insert into categoria(nome) values ('consoles');
+insert into categoria(nome) values ('Perifericos');
+
